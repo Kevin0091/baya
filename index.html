@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Envelope + Letter (Open/Close on Click)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>BouBou 7abibi💗🫶🏻</strong>
+                        <p>
+                            Ya 7yeti 🫶🏻, inti nour 3ayni w 9lbi. M3ak 7sit b 7ajet ma3rfthomch 9bal ki nfkr fik n8r9 m3ak wnfsiti ttbdl. Kif nchouf 47ktk nnsa denya bkolha w ki tkoun b3ida 3liya kol chy ywali fer8. N7bbbk b kol 9albi ya hm wmanajemch n3adi nhar ble8ir mansma3 soutk. انتِ دُنياي وَكُلّ حَياتي.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
+</body>
+</html>
