@@ -1,33 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Envelope + Letter (Open/Close on Click)</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>رحلة شهر من العشق</title>
+    <style>
+        /* أنماط التصميم */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #ffe6e6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .heart-bg {
+            position: absolute;
+            color: rgba(255, 100, 100, 0.1);
+            font-size: 120px;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(45deg, #ff3366, #ff758c);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+
+        .love-letter {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            line-height: 1.8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            border: 2px solid #ffd6d6;
+        }
+
+        .love-letter:before {
+            content: "✉️";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .memory {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #ff3366;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .memory:hover {
+            transform: translateX(10px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* تأثيرات خاصة */
+        .rose {
+            position: fixed;
+            width: 50px;
+            opacity: 1;
+            animation: fall 8s linear forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; transform: rotate(0deg); opacity: 1; }
+            100% { top: 110%; transform: rotate(360deg); opacity: 0; }
+        }
+
+        .heart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff3366;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,51,102,0.4);
+            transition: transform 0.3s;
+        }
+
+        .heart-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="envelope-wrapper">
-            <div class="envelope">
-                <div class="letter">
-                    <div class="text">
-                        <strong>BouBou 7abibi💗🫶🏻</strong>
-                        <p>
-                            Ya 7yeti 🫶🏻, inti nour 3ayni w 9lbi. M3ak 7sit b 7ajet ma3rfthomch 9bal ki nfkr fik n8r9 m3ak wnfsiti ttbdl. Kif nchouf 47ktk nnsa denya bkolha w ki tkoun b3ida 3liya kol chy ywali fer8. N7bbbk b kol 9albi ya hm wmanajemch n3adi nhar ble8ir mansma3 soutk. انتِ دُنياي وَكُلّ حَياتي.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="heart"></div>
+        <div class="header">
+            <h1>شـهرٌ من الإمـتـيـاز</h1>
+            <h2>Omar 💗 Baya</h2>
+            <p>منذ : 24/01/2025</p>
         </div>
+
+        <div class="love-letter">
+            <h3>إلى روحٍ سكنت قلبي...</h3>
+            <p>
+                ثلاثون يومًا من السعادة التي لا تُقاس،<br>
+                ثلاثون قمرًا رأيتُ في عينيكِ كل معنى الجمال،<br>
+                في كل لحظةٍ معكِ أكتشف أن الحب الحقيقي<br>
+                ليس مجرد شعور، بل هو وطنٌ نبنيه معًا.<br><br>
+
+                كم أنا ممتنٌ لهذه الأيام التي علمتني<br>
+                أن الحب ليس عمرًا يُقاس بالسنين،<br>
+                بل بلحظاتٍ تذوب فيها الأوقات<br>
+                وتصبح الذكرى عهدًا لا ينكسر.<br><br>
+
+                أعدكِ أن أكون دائمًا السند الذي تبحثين عنه،<br>
+                الملاذ الآمن حين تعبُ الخطى،<br>
+                وأن نكتبَ معًا فصولًا من الحب<br>
+                تُذهِل حتى النجوم في سماواتها.<br><br>
+
+                إلى الأبد.. رفيقة دربي 🍃
+            </p>
+        </div>
+
+        <div class="timeline">
+            <div class="memory">
+                <h4>اليوم الأول</h4>
+                <p>حين التقينا.. وكأن الكون توقف ليصنع لنا ذكرى</p>
+            </div>
+            
+            <div class="memory">
+                <h4>الأسبوع الأول</h4>
+                <p>لحظاتٌ من الحب الخالص صنعناها بأنفسنا</p>
+            </div>
+            
+            <div class="memory">
+                <h4>الذكرى الثلاثون</h4>
+                <p>وها نحن هنا.. أقوى وأكثر حبًا مما كنا</p>
+            </div>
+        </div>
+
+        <footer>
+            "الحب لا يُحتفى به بالزهور، بل بالعهود التي تزهر كل يوم" 🌸
+        </footer>
     </div>
+
+    <button class="heart-btn" onclick="showSecret()">♥</button>
+
     <script>
-        const envelope = document.querySelector('.envelope-wrapper');
-        envelope.addEventListener('click', () => {
-            envelope.classList.toggle('flap');
-        });
+        // دالة إنشاء الورود عند النقر/اللمس
+        function createRoses(event) {
+            const numRoses = 5; // عدد الورود لكل نقر
+            for(let i = 0; i < numRoses; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                
+                // تحديد موقع النقر
+                const xPos = event.clientX || event.touches[0].clientX;
+                const yPos = event.clientY || event.touches[0].clientY;
+                
+                rose.style.left = xPos + Math.random() * 50 - 25 + 'px';
+                rose.style.top = yPos + 'px';
+                rose.textContent = '🌹';
+
+                document.body.appendChild(rose);
+                
+                // إزالة الوردة بعد انتهاء الأنيميشن
+                setTimeout(() => {
+                    rose.remove();
+                }, 8000);
+            }
+        }
+
+        // تفعيل عند النقر أو اللمس
+        document.addEventListener('click', createRoses);
+        document.addEventListener('touchstart', createRoses);
+
+        // رسالة سرية عند الضغط على القلب
+        function showSecret() {
+            alert("أنتِ أجمل شيء حدث في حياتي.. أحبك إلى الأبد ❤️");
+        }
     </script>
 </body>
 </html>
