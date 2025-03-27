@@ -3,177 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Heartfelt Apology</title>
+    <title>Magical Apology Letter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
-            height: 100vh;
+            margin: 0;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
-
-        .apology-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            text-align: center;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-            position: relative;
-        }
-
-        .apology-card:hover {
-            transform: scale(1.02) rotate(1deg);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            color: #e74c3c;
-            font-size: 2.5em;
-            margin-bottom: 1rem;
-            font-family: 'Brush Script MT', cursive;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .message {
-            color: #333;
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .hearts {
-            font-size: 3em;
-            margin: 1rem 0;
-            animation: beat 1s infinite;
-        }
-
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        .button {
-            background: #e74c3c;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2em;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
         }
 
-        .button:hover {
-            background: #c0392b;
-            transform: scale(1.1);
+        .envelope-container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            transition: all 0.5s ease;
         }
 
-        .hidden-message {
-            display: none;
-            margin-top: 2rem;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-
-        .flowers {
+        .envelope {
             position: absolute;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            background: #fff5f7;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
         }
 
-        .flower {
+        .envelope::before {
+            content: '';
             position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff758c;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            opacity: 0.3;
+        }
+
+        .envelope::after {
+            content: '💌 Click to Open';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Pacifico', cursive;
+            color: #ff758c;
             font-size: 1.5em;
+            text-align: center;
+        }
+
+        .letter {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            transform: scale(0);
             opacity: 0;
-            animation: fall 5s linear infinite;
+            transition: all 0.5s ease 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            box-sizing: border-box;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-100%) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .open .envelope {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            transform: rotateX(180deg);
         }
 
-        @media (max-width: 600px) {
-            .apology-card {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .message {
-                font-size: 1em;
-            }
+        .open .letter {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff758c;
+            animation: float 3s ease-in-out infinite;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .signature {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+            color: #ff758c;
+            margin-top: auto;
+            padding-top: 20px;
+            text-align: right;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            color: #ff758c;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .letter p {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div class="apology-card">
-        <h1>I'm So Sorry, My Love ❤️</h1>
-        <div class="hearts">😭💗💔</div>
-        <p class="message">
-            My dearest Bayoutiiiiiii 😭😭😭💗<br><br>
-            I never meant to hurt you. Every moment without your smile feels empty. 
-            I promise to be better, to listen more, and to cherish you always. 
-            You mean everything to me, and I'll spend every day making it up to you. 
-            Please forgive this foolish heart that loves you completely. 🥺
-        </p>
-        <button class="button" onclick="showForgiveness()">Please Forgive Me</button>
-        <p id="forgivenMessage" class="hidden-message">
-            Thank you for your forgiveness! I love you endlessly! 🌹❤️
-        </p>
+    <div class="envelope-container" id="envelope">
+        <div class="envelope"></div>
+        <div class="letter">
+            <button class="close-btn">×</button>
+            <div class="letter-content">
+                <p>My Dearest Bayoutiiiiiii,</p>
+                <p>بينما أجلس هنا وقلبي مثقل، أدرك أن الكلمات لا تكفي للتعبير عن مدى أسفي. كالوردة بلا بتلاتها، لا أكتمل إلا بعفوك. </p>
+                <p>أفعالي كانت طائشة، وأنا آسفٌ جدًا على الألم الذي سببته. أنتِ أغلى من نجوم السماء بالنسبة لي. </p>
+                <p>
+ارجو أن تعلمي اني احبك اني سأموت من أجلك ان لزم الامر، و أنني ملتزم بأن أكون أفضل، وأن أصغي أكثر، وأن أقدّر ما لدينا. اتمني ان القى عفوكِ فأني والله العظيم ما أحسست بشعور النذالة و الحقارة الا هذه المرة فإني أدركت اني احبك و اني لا أقدر على حياة بدونك. ادامك الله لي يا معشوقة عمري 💗</p>
+                <div class="signature">Omar</div>
+                <div class="heart">❤️</div>
+            </div>
+        </div>
     </div>
 
     <script>
-        function showForgiveness() {
-            document.getElementById('forgivenMessage').style.display = 'block';
-            document.querySelector('.button').style.display = 'none';
-            createFlowers();
-        }
+        const envelope = document.getElementById('envelope');
+        const closeBtn = document.querySelector('.close-btn');
 
-        function createFlowers() {
-            const flowers = ['🌸', '🌹', '💮', '🏵️', '🌺', '🌷'];
-            const container = document.createElement('div');
-            container.className = 'flowers';
-            
-            for (let i = 0; i < 50; i++) {
-                const flower = document.createElement('div');
-                flower.className = 'flower';
-                flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-                flower.style.left = Math.random() * 100 + '%';
-                flower.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(flower);
-            }
-            
-            document.body.appendChild(container);
-        }
+        envelope.addEventListener('click', () => {
+            envelope.classList.add('open');
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            envelope.classList.remove('open');
+        });
     </script>
 </body>
 </html>
